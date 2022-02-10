@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
@@ -27,7 +28,30 @@ class LoginActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         val viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        viewModel.showToast.observe(this) { showToast ->
+            if ( showToast == "errorIdMdp" ) {
+                Toast.makeText(
+                    this,
+                    "L'identifiant ou le mot de passe n'est pas valide",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+                if ( showToast == "errorIdMdpVoid" ) {
+                    Toast.makeText(
+                        this,
+                        "L'identifiant ou le mot de passe n'est pas saisie",
+                        Toast.LENGTH_SHORT
+                    ).show()
+            }
+            if ( showToast == "succesConnexion" ) {
+                Toast.makeText(
+                    this,
+                    "Connexion réussi",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
 
+        }
         val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this

@@ -13,6 +13,7 @@ class UserRepository() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    val user = auth.currentUser
                     closure("", null)
                 } else {
                     closure(null, task.exception)

@@ -9,40 +9,42 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bouillon.model.users.UserRepository
 
-class LoginViewModel(var context: Context) : ViewModel() {
+class LoginViewModel() : ViewModel() {
 
     private val userRepository: UserRepository = UserRepository()
 
-    private val _username = MutableLiveData<String>()
-    val username: LiveData<String>
-        get() = _username
+    val username = MutableLiveData<String>()
 
-    private val _password = MutableLiveData<String>()
-    val password: LiveData<String>
-        get() = _password
+    val password = MutableLiveData<String>()
+
+
+    private val _showToast = MutableLiveData<String>()
+    val showToast: LiveData<String>
+        get() = _showToast
 
     init {
-        _username.value = "totodu07@gmail.com"
-        _password.value = "totodu07"
-
+        username.value = "totodu07@gmail.com"
+        password.value = "totodu07"
     }
 
     fun logIn() {
-        if (_username.value.isNullOrEmpty() || _password.value.isNullOrEmpty()) {
+        if (username.value.isNullOrEmpty() || password.value.isNullOrEmpty()) {
             //  TODO: Erreur à gérer
+            _showToast.postValue("errorIdMdpVoid")
+
         }
         else
         {
-            _username.value?.let { username ->
-                _password.value?.let { password ->
-                    userRepository.logIn(username, password, closure = { result, exception -> Unit
+            username.value?.let { username ->
+                password.value?.let { password ->
+                    userRepository.logIn(username, password, closure = {result, exception -> Unit
                         if (exception != null) {
                             //  TODO: Display error
-                            Toast.makeText(context,"Identifiant ou mot de passe incorrect", Toast.LENGTH_SHORT).show()
+                            _showToast.postValue("errorIdMdp")
 
                         } else {
                             //  TODO: Login succeed, go to next page
-                            Toast.makeText(context,"Connexion réussie", Toast.LENGTH_SHORT).show()
+                            _showToast.postValue("succesConnexion")
 
                         }
                     })
