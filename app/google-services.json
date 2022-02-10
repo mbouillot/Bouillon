@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "636636484038",
+    "project_id": "bouillon-12",
+    "storage_bucket": "bouillon-12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636636484038:android:b5c40d82ec02ab9ce8a2c7",
+        "android_client_info": {
+          "package_name": "com.example.bouillon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636636484038-cpofpq8va9de3mls4bo2tg6atshgm0is.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bouillon",
+            "certificate_hash": "f16a22344b4f6c6472b09647527d46c004db0f24"
+          }
+        },
+        {
+          "client_id": "636636484038-4oc1o4hrraqjbgfcbh0l9f45vqfilmem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNBPB3_IO37Zm2WhqqW0iSdShOjKHeynU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636636484038-4oc1o4hrraqjbgfcbh0l9f45vqfilmem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
