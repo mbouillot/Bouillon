@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.SignUpActivity">
+
+    <data>
+        <variable name="viewModel" type="com.example.bouillon.viewmodel.SignUpViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nom d'utilisateur" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.username}"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mot de passe"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:text="@={viewModel.password}"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirmer mot de passe"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:text="@={viewModel.repassword}"/>
+
+        <Button
+            android:id="@+id/btnInscrire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="S'inscrire"
+            android:onClick="@{() -> viewModel.signUp()}"/>
+
+
+    </LinearLayout>
+
+</layout>

@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Username" />
+        android:text="Nom d'utilisateur" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Password"/>
+        android:text="Mot de passe"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,6 +38,12 @@
         android:layout_height="wrap_content"
         android:text="Connexion"
         android:onClick="@{() -> viewModel.logIn()}"/>
+    <Button
+        android:id="@+id/btnEnregistrer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="S'enregistrer"
+        android:onClick="@{() -> viewModel.signUp()}"/>
 
 
 </LinearLayout>

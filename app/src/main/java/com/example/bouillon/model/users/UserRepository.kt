@@ -21,4 +21,16 @@ class UserRepository() {
             }
     }
 
+    fun signUp(email: String, password: String,repassword: String, closure: (result: String?, exception: Exception?) -> Unit) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    closure("", null)
+                } else {
+                    closure(null, task.exception)
+                }
+            }
+    }
+
 }

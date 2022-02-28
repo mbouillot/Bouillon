@@ -1,13 +1,12 @@
 package com.example.bouillon.viewmodel
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.Toast
+import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bouillon.model.users.UserRepository
+
 
 class LoginViewModel() : ViewModel() {
 
@@ -52,5 +51,12 @@ class LoginViewModel() : ViewModel() {
             }
         }
     }
+
+    fun signUp() {
+
+    }
+
+
+
 
 }

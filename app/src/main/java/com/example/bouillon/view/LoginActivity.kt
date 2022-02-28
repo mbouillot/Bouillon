@@ -1,5 +1,6 @@
 package com.example.bouillon.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -21,12 +22,27 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var viewModel: LoginViewModel
     private lateinit var auth: FirebaseAuth
+    lateinit var btnEnregistrer : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        auth = Firebase.auth
 
+        //initialisation
+        btnEnregistrer = findViewById(R.id.btnEnregistrer)
+
+        // creation de notre intent
+        val monIntent : Intent =  Intent(this,SignUpActivity::class.java)
+
+        //clic sur le bouton
+        btnEnregistrer.setOnClickListener {
+            startActivity(monIntent)
+        }
+
+
+
+
+        auth = Firebase.auth
         val viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         viewModel.showToast.observe(this) { showToast ->
             if ( showToast == "errorIdMdp" ) {
