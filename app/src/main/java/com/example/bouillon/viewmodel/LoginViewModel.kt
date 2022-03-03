@@ -13,13 +13,16 @@ class LoginViewModel() : ViewModel() {
     private val userRepository: UserRepository = UserRepository()
 
     val username = MutableLiveData<String>()
-
     val password = MutableLiveData<String>()
 
 
     private val _showToast = MutableLiveData<String>()
     val showToast: LiveData<String>
         get() = _showToast
+
+    private val _navigation = MutableLiveData<Int>()
+    val navigation: LiveData<Int>
+        get() = _navigation
 
     init {
         username.value = "totodu07@gmail.com"
@@ -44,7 +47,7 @@ class LoginViewModel() : ViewModel() {
                         } else {
                             //  TODO: Login succeed, go to next page
                             _showToast.postValue("succesConnexion")
-
+                            _navigation.postValue(1);
                         }
                     })
                 }
@@ -53,7 +56,7 @@ class LoginViewModel() : ViewModel() {
     }
 
     fun signUp() {
-
+        _navigation.postValue(2);
     }
 
 

@@ -11,6 +11,8 @@ import com.example.bouillon.model.users.UserRepository
 
 class SignUpViewModel() : ViewModel() {
 
+    private val userRepository: UserRepository = UserRepository()
+
 
     val username = MutableLiveData<String>()
 
@@ -31,21 +33,29 @@ class SignUpViewModel() : ViewModel() {
 
     fun signUp() {
         if (username.value.isNullOrEmpty() || password.value.isNullOrEmpty() || repassword.value.isNullOrEmpty()) {
-            _showToast.postValue("errorIdMdpVoid")
+            _showToast.postValue("errorVoid")
 
         } else if (password.value != repassword.value) {
 
-            _showToast.postValue("errorMdpNonIdentique")
+            _showToast.postValue("errorMDPMDP")
         }
-     else if (username.value.exist = true )
-    {
-
-        _showToast.postValue("errorIdExixt")
-    }
-        else if (username.value.exist = false && password.value == repassword.value)
+        else
         {
+            username.value?.let { username ->
+                password.value?.let { password ->
+                    userRepository.signUp(username, password, closure = {result, exception -> Unit
+                        if (exception != null) {
+                            //  TODO: Display error
+                            _showToast.postValue("errorWarning")
 
-            // traitement
+                        } else {
+                            //  TODO: Login succeed, go to next page
+                            _showToast.postValue("succesInscription")
+
+                        }
+                    })
+                }
+            }
         }
 
 }

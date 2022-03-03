@@ -22,33 +22,36 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var viewModel: LoginViewModel
     private lateinit var auth: FirebaseAuth
-    lateinit var btnEnregistrer : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        //initialisation
-        btnEnregistrer = findViewById(R.id.btnEnregistrer)
-
-        // creation de notre intent
-        val monIntent : Intent =  Intent(this,SignUpActivity::class.java)
-
-        //clic sur le bouton
-        btnEnregistrer.setOnClickListener {
-            startActivity(monIntent)
-        }
-
-
-
-
         auth = Firebase.auth
         val viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+
+        viewModel.navigation.observe(this) { number ->
+            var monIntent : Intent? = null
+            if (number == 1)
+            {
+                monIntent =  Intent(this,MenuActivity::class.java)
+
+            }
+            if (number == 2)
+            {
+                 monIntent =  Intent(this,SignUpActivity::class.java)
+
+            }
+            monIntent?.let {
+                startActivity(it)
+            }
+        }
+
         viewModel.showToast.observe(this) { showToast ->
             if ( showToast == "errorIdMdp" ) {
                 Toast.makeText(
                     this,
-                    "L'identifiant ou le mot de passe n'est pas valide",
+                    "L'identifiant ou le mot de passe est  incorrect",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -62,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
             if ( showToast == "succesConnexion" ) {
                 Toast.makeText(
                     this,
-                    "Connexion réussi",
+                    "Connexion réussie",
                     Toast.LENGTH_SHORT
                 ).show()
             }
