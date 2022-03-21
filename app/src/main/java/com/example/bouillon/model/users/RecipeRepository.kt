@@ -12,7 +12,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class RecipeRepository {
 
-    @field:Json(name = "id")
+   /* @field:Json(name = "id")
     var idRecipe: Int?,
 
     @field:Json(name = "title")
@@ -72,5 +72,5 @@ class RecipeRepository {
                 }
             }
         }
-    }
+    }*/
 }

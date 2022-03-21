@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.bouillon.R
 import com.example.bouillon.viewmodel.LoginViewModel
+import com.example.bouillon.viewmodel.SignUpViewModel
 
 class SignUpActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel: SignUpViewModel
 
 
 
