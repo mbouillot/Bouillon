@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
         auth = Firebase.auth
         val viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
+        //error
         viewModel.navigation.observe(this) { number ->
             var monIntent : Intent? = null
             if (number == 1)
