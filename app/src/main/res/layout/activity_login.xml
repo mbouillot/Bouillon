@@ -12,56 +12,98 @@
     </data>
 
 
-
-
-
-<LinearLayout
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".LoginActivity"
+        android:orientation="vertical">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/bouillon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="129dp"
         android:layout_height="wrap_content"
         android:text="Nom d'utilisateur" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@={viewModel.username}"/>
+
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="122dp"
         android:layout_height="wrap_content"
-        android:text="Mot de passe"/>
+        android:text="Mot de passe" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:text="@={viewModel.password}"/>
-
-    <Button
-        android:id="@+id/btnConnexion"
-        android:layout_width="180dp"
-        android:layout_height="40dp"
-        android:text="Connexion"
-        android:textSize="20dp"
-        android:textColor="@android:color/holo_purple"
-        android:background="@drawable/rounded_rectangle"
-        android:onClick="@{() -> viewModel.logIn()}"/>
-    <Button
-        android:id="@+id/btnEnregistrer"
-        android:layout_width="180dp"
-        android:layout_height="40dp"
-        android:text="S'enregistrer"
-        android:onClick="@{() -> viewModel.signUp()}"/>
-
-
 </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="302dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnConnexion"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/rounded_rectangle"
+                android:onClick="@{() -> viewModel.logIn()}"
+                android:text="Connexion"
+                android:textColor="@android:color/holo_purple"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnEnregistrer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnEnregistrer"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="128dp"
+                android:background="@drawable/rounded_rectangle"
+                android:onClick="@{() -> viewModel.signUp()}"
+                android:text="S'enregistrer"
+                android:textColor="@android:color/holo_purple"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</LinearLayout>
+
+
+
 
 </layout>

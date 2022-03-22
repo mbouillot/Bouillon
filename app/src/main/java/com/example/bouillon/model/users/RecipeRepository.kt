@@ -12,17 +12,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class RecipeRepository {
 
-   /* @field:Json(name = "id")
-    var idRecipe: Int?,
-
-    @field:Json(name = "title")
-    var titleRecipe: String?,
-
-    @field:Json(name = "image")
-    var imageRecipe: String?,
-
-    @field:Json(name = "imageType")
-    var imageTypeRecipe: String?
+  /*
 
 
     fun parseJSON() {
