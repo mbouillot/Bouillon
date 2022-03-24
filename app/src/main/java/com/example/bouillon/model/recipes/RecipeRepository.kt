@@ -1,8 +1,7 @@
-package com.example.bouillon.model.users
+package com.example.bouillon.model.recipes
 
 import android.util.Log
 import com.example.bouillon.API.APIService
-import com.squareup.moshi.Json
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -12,14 +11,11 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class RecipeRepository {
 
-  /*
-
-
-    fun parseJSON() {
+    fun search(): List<Recipe> {
 
         // Create Retrofit
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.spoonacular.com/recipes/complexSearch?apiKey=635a0c7cd39a4a4cbafd0a1787c8e2ca")
+            .baseUrl("https://api.spoonacular.com/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
@@ -28,29 +24,31 @@ class RecipeRepository {
         CoroutineScope(Dispatchers.IO).launch {
 
             // Do the GET request and get response
-            val response = service.getRecipe()
+            val response = service.complexSearch()
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
 
                     val items = response.body()
                     if (items != null) {
-                        for (i in 0 until items.count()) {
+                        for (i in 0 until items.results.count()) {
                             // ID
-                            val id = items[i].idRecipe ?: "N/A"
-                            Log.d("ID: ", id)
+                            val id = items.results[i].idRecipe
+                            Log.d("ID: ", id.toString())
 
                             // Employee Name
-                            val titleRecipe = items[i].titleRecipe ?: "N/A"
+                            val titleRecipe = items.results[i].titleRecipe
                             Log.d("Title recipe: ", titleRecipe)
 
                             // Employee Salary
-                            val imageRecipe = items[i].imageRecipe ?: "N/A"
+                            val imageRecipe = items.results[i].imageRecipe
                             Log.d("Image recipe: ", imageRecipe)
 
                             // Employee Age
-                            val imageTypeRecipe = items[i].imageTypeRecipe ?: "N/A"
+                            val imageTypeRecipe = items.results[i].imageTypeRecipe
                             Log.d("Image type recipe: ", imageTypeRecipe)
+
+                            val newRecipe = Recipe(id, titleRecipe)
 
                         }
                     }
@@ -62,5 +60,5 @@ class RecipeRepository {
                 }
             }
         }
-    }*/
+    }
 }

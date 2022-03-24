@@ -11,6 +11,7 @@ class MenuViewModel {
         get() = _navigation
 
     fun search() {
+
         _navigation.postValue(1);
     }
 

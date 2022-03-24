@@ -3,6 +3,7 @@ package com.example.bouillon.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProviders
 import com.example.bouillon.R
 import com.example.bouillon.viewmodel.LoginViewModel
 import com.example.bouillon.viewmodel.SignUpViewModel
@@ -16,7 +17,7 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-
+        viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
         viewModel.showToast.observe(this) { showToast ->
             if ( showToast == "errorVoid" ) {
                 Toast.makeText(
