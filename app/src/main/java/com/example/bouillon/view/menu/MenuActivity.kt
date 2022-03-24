@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bouillon.R
 import com.example.bouillon.databinding.ActivityMenuBinding
+import com.example.bouillon.viewmodel.LoginViewModel
 import com.example.bouillon.viewmodel.MenuViewModel
 
 
@@ -22,6 +23,7 @@ class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+        viewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
 
         viewModel.showToast.observe(this) { showToast ->
             if ( showToast == "errorVoid" ) {
@@ -42,7 +44,6 @@ class MenuActivity : AppCompatActivity() {
 
         }
 
-        viewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
 
         val binding: ActivityMenuBinding = DataBindingUtil.setContentView(this, R.layout.activity_menu)
         binding.viewModel = viewModel

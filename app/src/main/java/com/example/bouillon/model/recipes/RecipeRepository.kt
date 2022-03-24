@@ -25,7 +25,7 @@ class RecipeRepository {
         CoroutineScope(Dispatchers.IO).launch {
 
             // Do the GET request and get response
-            val response = service.complexSearch("635a0c7cd39a4a4cbafd0a1787c8e2ca")
+            val response = service.complexSearch("635a0c7cd39a4a4cbafd0a1787c8e2ca", title)
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
