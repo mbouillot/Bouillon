@@ -2,17 +2,55 @@ package com.example.bouillon.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.example.bouillon.model.recipes.Recipe
+import com.example.bouillon.model.recipes.RecipeRepository
+import com.example.bouillon.model.users.UserRepository
 
-class MenuViewModel {
+class MenuViewModel : ViewModel() {
 
+    private val recipeRepository: RecipeRepository = RecipeRepository()
+
+    private val _search = MutableLiveData<String>()
+    val search: LiveData<String>
+        get() = _search
 
     private val _navigation = MutableLiveData<Int>()
     val navigation: LiveData<Int>
         get() = _navigation
 
-    fun search() {
+    private val _showToast = MutableLiveData<String>()
+    val showToast: LiveData<String>
+        get() = _showToast
 
-        _navigation.postValue(1);
+    private val _recipes = MutableLiveData<List<Recipe>>()
+    val recipes: LiveData<List<Recipe>>
+        get() = _recipes
+
+    init {
+
+    }
+
+    fun search() {
+        if (search.value.isNullOrEmpty())  {
+            //  TODO: Erreur à gérer
+            _showToast.postValue("errorVoid")
+
+        }
+        else
+        {
+            recipeRepository.search(search.value!!, closure = { resultRecipes, exception -> Unit
+                if (exception != null) {
+                    //  TODO: Display error
+                    _showToast.postValue("errorFailled")
+
+                } else {
+                    resultRecipes?.let {
+                        _recipes.postValue(it)
+                    }
+                }
+            })
+        }
     }
 
     fun favorites() {

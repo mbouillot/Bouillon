@@ -21,8 +21,8 @@
 
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:src="@drawable/bouillon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,12 +55,25 @@
             android:inputType="textPassword"
             android:text="@={viewModel.repassword}"/>
 
-        <Button
-            android:id="@+id/btnInscrire"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="S'inscrire"
-            android:onClick="@{() -> viewModel.signUp()}"/>
+            android:layout_height="302dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnInscrire"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.signUp()}"
+                android:text="S'inscrire"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.102" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </LinearLayout>

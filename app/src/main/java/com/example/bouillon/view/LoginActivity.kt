@@ -2,15 +2,13 @@ package com.example.bouillon.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.bouillon.R
 import com.example.bouillon.databinding.ActivityLoginBinding
+import com.example.bouillon.view.menu.MenuActivity
 import com.example.bouillon.viewmodel.LoginViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -35,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
             var monIntent : Intent? = null
             if (number == 1)
             {
-                monIntent =  Intent(this,MenuActivity::class.java)
+                monIntent =  Intent(this, MenuActivity::class.java)
 
             }
             if (number == 2)

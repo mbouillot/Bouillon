@@ -2,6 +2,7 @@ package com.example.bouillon.model.recipes
 
 import android.util.Log
 import com.example.bouillon.API.APIService
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -11,7 +12,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class RecipeRepository {
 
-    fun search(): List<Recipe> {
+    fun search(title: String, closure: (result: List<Recipe>?, exception: Exception?) -> Unit) {
 
         // Create Retrofit
         val retrofit = Retrofit.Builder()
@@ -24,7 +25,7 @@ class RecipeRepository {
         CoroutineScope(Dispatchers.IO).launch {
 
             // Do the GET request and get response
-            val response = service.complexSearch()
+            val response = service.complexSearch("635a0c7cd39a4a4cbafd0a1787c8e2ca")
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
@@ -48,7 +49,7 @@ class RecipeRepository {
                             val imageTypeRecipe = items.results[i].imageTypeRecipe
                             Log.d("Image type recipe: ", imageTypeRecipe)
 
-                            val newRecipe = Recipe(id, titleRecipe)
+                            val newRecipe = Recipe(id, titleRecipe,imageRecipe,imageTypeRecipe)
 
                         }
                     }
@@ -60,5 +61,6 @@ class RecipeRepository {
                 }
             }
         }
+
     }
 }

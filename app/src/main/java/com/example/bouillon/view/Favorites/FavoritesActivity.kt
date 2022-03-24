@@ -1,12 +1,10 @@
-package com.example.bouillon.view
+package com.example.bouillon.view.Favorites
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.bouillon.R
 
 class FavoritesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_favorites)
     }
 }

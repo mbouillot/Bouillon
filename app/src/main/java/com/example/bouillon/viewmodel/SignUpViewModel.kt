@@ -25,10 +25,14 @@ class SignUpViewModel() : ViewModel() {
     val showToast: LiveData<String>
         get() = _showToast
 
+    private val _navigation = MutableLiveData<Int>()
+    val navigation: LiveData<Int>
+        get() = _navigation
+
     init {
-        username.value = "nomUtilisateur@gmail.com"
-        password.value = "********"
-        repassword.value = "********"
+        username.value = "xxxxxx@gmail.com"
+        password.value = ""
+        repassword.value = ""
     }
 
     fun signUp() {
@@ -38,6 +42,10 @@ class SignUpViewModel() : ViewModel() {
         } else if (password.value != repassword.value) {
 
             _showToast.postValue("errorMDPMDP")
+        }
+        else if (password.value!!.length <=6  || repassword.value!!.length <= 6 ) {
+
+            _showToast.postValue("errorShort")
         }
         else
         {
@@ -51,6 +59,8 @@ class SignUpViewModel() : ViewModel() {
                         } else {
                             //  TODO: Login succeed, go to next page
                             _showToast.postValue("succesInscription")
+                            _navigation.postValue(1);
+
 
                         }
                     })
