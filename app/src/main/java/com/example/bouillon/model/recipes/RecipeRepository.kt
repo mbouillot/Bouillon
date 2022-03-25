@@ -30,6 +30,8 @@ class RecipeRepository {
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
 
+                    val result = mutableListOf<Recipe>()
+
                     val items = response.body()
                     if (items != null) {
                         for (i in 0 until items.results.count()) {
@@ -51,16 +53,24 @@ class RecipeRepository {
 
                             val newRecipe = Recipe(id, titleRecipe,imageRecipe,imageTypeRecipe)
 
+                            result.add(newRecipe)
+
                         }
+
+                        closure(result, null)
+
                     }
 
                 } else {
 
                     Log.e("RETROFIT_ERROR", response.code().toString())
 
+                    closure(null, Exception("Oops!"))
+
                 }
             }
         }
+
 
     }
 }

@@ -12,7 +12,7 @@ class MenuViewModel : ViewModel() {
     private val recipeRepository: RecipeRepository = RecipeRepository()
 
     private val _search = MutableLiveData<String>()
-    val search: LiveData<String>
+    val searchValue: MutableLiveData<String>
         get() = _search
 
     private val _navigation = MutableLiveData<Int>()
@@ -32,14 +32,14 @@ class MenuViewModel : ViewModel() {
     }
 
     fun search() {
-        if (search.value.isNullOrEmpty())  {
+        if (searchValue.value.isNullOrEmpty())  {
             //  TODO: Erreur à gérer
             _showToast.postValue("errorVoid")
 
         }
         else
         {
-            recipeRepository.search(search.value!!, closure = { resultRecipes, exception -> Unit
+            recipeRepository.search(searchValue.value!!, closure = { resultRecipes, exception -> Unit
                 if (exception != null) {
                     //  TODO: Display error
                     _showToast.postValue("errorFailled")

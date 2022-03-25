@@ -7,6 +7,6 @@ import retrofit2.http.Query
 interface APIService {
 
    @GET("/recipes/complexSearch")
-   fun complexSearch(@Query("apiKey") apiKey: String, @Query("query") query: String): Response<APIRecipe.ApiResult>
+   suspend fun complexSearch(@Query("apiKey") apiKey: String, @Query("query") query: String): Response<APIRecipe.ApiResult>
 
 }

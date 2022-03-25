@@ -4,6 +4,7 @@ import android.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.bouillon.databinding.CellRecipeBinding
 import com.example.bouillon.model.recipes.Recipe
 
@@ -32,6 +33,7 @@ class RecipeAdapter: RecyclerView.Adapter<RecipeViewHolder> {
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         val currentRecipe = _recipes.get(position)
         holder.setRecipe(currentRecipe)
+
     }
 
     override fun getItemCount(): Int {
