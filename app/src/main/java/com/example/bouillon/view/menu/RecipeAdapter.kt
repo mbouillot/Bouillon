@@ -13,7 +13,7 @@ import com.example.bouillon.databinding.CellRecipeBinding
 import com.example.bouillon.model.recipes.Recipe
 
 
-   class RecipeAdapter(var Context: Context): RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
+   class RecipeAdapter(var Context: List<Recipe>): RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
 
     private lateinit var _recipes: MutableList<Recipe>
 
@@ -43,17 +43,19 @@ import com.example.bouillon.model.recipes.Recipe
         return RecipeViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        val currentRecipe = _recipes.get(position)
-        holder.setRecipe(currentRecipe)
-        Glide.with(Context)
-            .load(currentRecipe.imageRecipe)
-            .into(holder.img)
 
-    }
+       override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+           val currentRecipe = _recipes[position]
+           holder.title.text = currentRecipe.title
+           Glide.with(Context)
+               .load(currentRecipe.imageRecipe)
+               .into(holder.img)
+       }
 
     override fun getItemCount(): Int {
         return _recipes.size
     }
 
-}
+
+
+   }

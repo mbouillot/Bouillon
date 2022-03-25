@@ -1,8 +1,6 @@
 package com.example.bouillon.view.menu
 
 import android.os.Bundle
-import android.view.View
-import android.widget.SimpleAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -12,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bouillon.R
 import com.example.bouillon.databinding.ActivityMenuBinding
-import com.example.bouillon.viewmodel.LoginViewModel
 import com.example.bouillon.viewmodel.MenuViewModel
 
 
