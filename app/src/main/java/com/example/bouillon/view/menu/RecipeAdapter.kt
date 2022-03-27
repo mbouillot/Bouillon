@@ -13,7 +13,7 @@ import com.example.bouillon.databinding.CellRecipeBinding
 import com.example.bouillon.model.recipes.Recipe
 
 
-   class RecipeAdapter(var Context: List<Recipe>): RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
+   class RecipeAdapter(private var Context: Context): RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
 
     private lateinit var _recipes: MutableList<Recipe>
 
